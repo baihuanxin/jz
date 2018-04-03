@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+-------------------------------------------DOCTYPE HTML5 NOTE CLOSE-------------------------------------------------->
+
+<html lang="zh">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title> 知微时代 </title>
+
+    <link rel="stylesheet" href="./css/popuptest.css">
+
+</head>
+
+<body>
+
+
+<div id="header">
+
+    <header>
+
+        <ul id="titlenav">
+
+            <li>
+                <a href="javascript:void(0);">
+                    <div id="username" title="点击看看">匿名访客</div>
+                </a>
+                <!--注意此处一定要写全http的绝对路径-->
+
+
+                <ul class="dd">
+                    <li><a class="popup_gallery" href="http://localhost:63342/phpstormproject/plugin/login/login.php">用户切换</a></li>
+                    <li><a class="youtube_popup" href="https://www.youtube.com/embed/obRzfcvMshM?pt=youtube" >用户注销</a></li>
+                    <li><a href="#" >我的简介，注意直接引用youtube的url不能打开，必须使用embed</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+
+    </header>
+</div>
+
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script src="./js/jquery.popup.min.js"></script>
+<script>
+    $('.login_popup').popup();
+    $('.youtube_popup').popup({
+        types		: {
+            youtube			: function(content, callback){//此处的youtube一定要与href结尾的?pt=youtube统一,也要与http的域名和class统一，此外此处的youtube视频源来自youtube的embed。
+
+                content = '<iframe width="560" height="315" src="'+content+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+
+                // Don't forget to call the callback!
+                callback.call(this, content);
+
+
+            }
+        },
+
+        width				: 560,
+        height			: 315
+
+    });
+    /*-------------------------------
+
+    GALLERY SPECIFIC CODE
+
+-------------------------------*/
+
+    /*---------------------
+
+        SETTINGS
+
+    */
+
+    var gallerySettings = {
+        markup		: '' +
+        '<div class="popup">' +
+        '<div class="popup_wrap">' +
+        '<div class="popup_content"/>' +
+        '</div>' +
+        '</div>',
+        // This is a custom variable
+        gallery		: '.popup_gallery',
+        replaced	: function($popup, $back){
+
+            var plugin = this,
+                $wrap = $('.popup_wrap', $popup);
+
+            // Animate the popup to new size
+            $wrap.animate({
+                width 	: $wrap.children().children().outerWidth(true),
+                height 	: $wrap.children().children().outerHeight(true)
+            }, {
+                duration	: 500,
+                easing		: 'easeOutBack',
+                step		: function(){
+
+                    // Need to center the poup on each step
+                    $popup
+                        .css({
+                            top		: plugin.getCenter().top,
+                            left	: plugin.getCenter().left
+                        });
+
+                },
+                complete	: function(){
+
+                    // Fade in!
+                    $wrap
+                        .children()
+                        .animate({opacity : 1}, plugin.o.speed, function(){
+                            plugin.center();
+                            plugin.o.afterOpen.call(plugin);
+                        });
+
+                }
+            });
+        },
+        show		: function($popup, $back){
+
+            var plugin = this,
+                $wrap = $('.popup_wrap', $popup);
+
+            // Center the plugin
+            plugin.center();
+
+            // Default fade in
+            $popup
+                .animate({opacity : 1}, plugin.o.speed, function(){
+                    plugin.o.afterOpen.call(plugin);
+                });
+
+            // Set the inline styles as we animate later
+            $wrap.css({
+                width 	: $wrap.outerWidth(true),
+                height 	: $wrap.outerHeight(true)
+            });
+
+        }
+
+    };
+
+    $(function(){
+
+        /*---------------------
+
+            POPUP
+
+        */
+
+        $('.popup_gallery').popup(gallerySettings);
+
+        /*---------------------
+
+            NEXT & PREVIOUS LINKS
+
+        */
+
+        $(document).on('click', '[href]', function(e){
+
+            e.preventDefault();
+
+            var $current = $('.popup_active'),
+                popup = $current.data('popup'),
+                $items = $(popup.o.gallery);
+
+
+                    // Load the content
+                    popup.open($current.attr('href'), undefined, $current);
+
+                });
+
+    });
+
+</script>
+
+<div>&times;</div>
+
+</body>
+
+</html>

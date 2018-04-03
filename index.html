@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<!--上面是html5的说明定义。遵照何种 HTML 版本, html4 and xhtml are different，遵循W3C标准.-->
+
+<!------------------------------------------DOCTYPE HTML5 NOTE START--------------------------------------------------
+
+	机智项目开发工具列表:
+		1、Google、Youtube、Baidu、W3cSchool；注：使用VPN连接外网，暂用greenvpn。
+		2、Office and One-note；
+		3、Mindmanager(思维导图:线框图设计) and Axure(产品原型设计:UI设计)；
+		4、Xamp(开发环境) and Cpanel(运维环境)；
+		5、Adobe Photoshop(位图)and Illustrator(矢量图)；
+		6、Html5(网页元素内容) and CSS3(颜色和排版)；
+		7、Javascript(交互) and PHP(连接数据库、web、事件的程序)；
+		8、Xml and Xsl（不同系统，不同web，不同数据库，不同浏览器，不同应用间数据传输）；
+		9、React(javascript) and Laravel(php)；
+		10、Sass(css) and API(platform)；
+		11、RSS(订阅推送) and CGI(外部应用与服务器端口)；
+		12、Bootstrap(reponsive web) and Wordpress(content management system)；
+		13、其他小工具：color cube(屏幕取色器),page ruler(屏幕像素测量器),文件图片音频视频格式转换器,相关插件和接口等等；
+		14、Chrome可做很好的前端调试工具，按f12键的console；浏览器一般都具备，chrome较好；
+	
+	大型文档或代码的易读性非常重要，注释、结构、分类、命名非常重要.
+		1、html code comment out use this<!--this is a comment.
+		2、CSS code coment out use /*this is a test*/.
+		3、php code comment out use /* this is a test*/ or // this is a comment.	
+		4、Java script code comment out 同php.
+		
+	网站品质优化
+		1、对于提升 web 品质，<DOCTYPE>、<title> 以及 <h1> 都是重要的标签。
+			a、<DOCTYPE>定义html的版本，方便浏览器呈现网页和验证软件进行语法检查。
+			b、<title>将呈现为搜索引擎列表的标题、用户书签、浏览器窗口标题栏中，所以不同层级网页的标题至关重要。	
+			c、请确保把 <h1> 用于最顶层的标题，<h2> 和 <h3> 用于较低的层级，方便搜索引擎或其他软件理解网页结构。
+		
+		2、使用样式替代 <font></font> 标签可使我们更轻松地为网页制作高质量的界面。
+		3、请勿使用固定的字体尺寸,请始终使用相对的尺寸值。
+			a、文字尺寸设置为100%(或者 medium),主标题设置为140%(或者 x-large),而次级的标题设置为120%(large).
+			b、勿使用很小的默认字体尺寸
+	
+		4、如果您为 web 元素定义了颜色，那么同样应当定义背景颜色。
+			a、留意颜色的对比,对于视力不太好的人或者对于不太好的显示设备来说，黑底白字或者白底黑字是最佳的。
+		
+		5、留意字母的间距, 留意行间距, 避免奇特的字体, 尽量少用斜体
+		6、alt 属性允许你为图像（也可以为其它的元素）提供一条相对应的文字。
+		7、请始终在 <head> 元素内 使用下面的的元元素：<meta http-equiv="Content-Type" content="text/html; charset=X" />
+		8、国际标准化 (ISO) 为日期定义的国际标准格式是 "yyyy-mm-dd"，yyyy 是年，mm 是月，dd 是日。
+	
+	image,audio,video,文件都应具备多种格式以适应不同的浏览器.
+		1、图片jpeg\gif\png几乎所有浏览器都支持，所以最好转换格式为这些类型。
+		2、音频MP3，视频MP4几乎所有浏览器都支持，所以最好转换格式为这些类型。
+		3、另外客户最好选用主流浏览器访问，如IE、edge、chrome、safari、firefox、opera。
+		4、另外，常用文件的文件格式也应最好统一转换，或调用用户应用打开，或使用网络插件或资源打开。	
+		5、将图片、音频、视频格式转换为特定的格式和尺寸，然后按百分比呈现。
+		
+	PHP,javascript,css,mysql在html5中的接口
+		1、php use < ? php & ? >，需去除空格。
+		2、javascript use <script> & </script>,jquery需要texttype说明。
+		3、css use <style> & </style>.注：selector & attribute。
+			a、style: directly or embeded in head or external style sheet sytle.可以和css文件同时使用。
+			
+		4、mysql数据库连接 use php语言：myspl_connect("localhost","root","xxxxxxxxx")。
+	
+	如何命名tag、id 、class & name非常重要!在html标签中,在css中,在数据库中等,对于庞大的文档分类、命名和结构非常重要。 
+	
+	Html,CSS,Javascript中默认的缺省路径不同，文件href位置一定要写全。
+	
+	Div容器一定要广泛使用，否则会出现很多问题，但不可滥用。html、head、body、main、header、nav、footer、aside等标签具有易读性。
+	
+	一个网页文件中也可以有多个header, 也许可以有多个body、head、header、nav、footer、asider等.
+	
+	Audio元素不能像video元素一样控制尺寸，iE不支持wav格式，所以iE与edge和chrome中audio尺寸不一。可采用自定义的audio界面代替。
+	
+	CSDN中代码复制采用plain view模式中复制，否则格式可能有误。
+	
+	jQuery,jQuery-ui,jQuery的各种库（如daterangepicker）可同时使用，但同一类别不同版本重复引用可能冲突，需要noconflict()解决.
+	
+	Html5可智能判断兼容很多不严谨的句法。
+	
+	用法范例：
+		1、style="color:blue; text-align:center"
+		2、<a href="http://www.w3school.com.cn">W3School</a>
+		3、<img src="./img/公司logo.png" alt="公司Logo" />
+		4、< ?php 注：此处多了空格，避免php执行。
+				echo"私有专属的机构智慧融合平台。\n";
+				$answer = 6*7;
+				echo "The answer is $answer, what again was the question?";
+			?>
+		5、<+!--[if it IE 9]>注：这里tag首尾各多了一个+号，避免执行。
+				<script>
+					document.createElement("article");
+					document.createElement("aside");
+					document.createElement("footer");
+					document.createElement("header");
+					document.createElement("main");
+					document.createElement("nav");
+					document.createElement("section");
+				</script>
+			<![endif]--+>
+		6、语法书写规范
+			<meta>,<source>;
+			<img />,<link />,<area />,<input />,<base />,<hr />,<br />;
+			<audio></audio>,<video></video>,<bdo></bdo>,<big></big>,<blockquote></blockquote>,<canvas></canvas>,
+			<cite></cite>,<center></center>,等正常。
+			
+	存在问题：
+		1、网页表现不太稳定，如注释有时会影响;句尾有无";"也会影响;浏览器缓存也会影响。
+		2、我的body border没有了，由于fixed footer & float elements导致，已解决。
+		3、width、height、padding、margin、font等一定使用百分比表示，或相对值表示，最好不使用绝对值
+		4、元素水平垂直居中、窗口100%显示、float element collapse、fixed element collapse都以解决。
+		5、在header中id重复，header、nav也重复了。不过只有这样chrome和edge才显示正确。
+		6、换机器环境，总要为各种链接频繁的修改port，已解决。
+		7、daterangepicker只随ctr+放大，不随ctr—缩小，已解决。
+		8、sidebar不能在content居中，源于header和footer不等高。
+		9、需要使用script的注释隐藏脚本，同时使用<noscript>标签提供禁用脚本时的提示。
+		
+	writen by Bai huanxin, in china, 2017-2-15.
+
+-------------------------------------------DOCTYPE HTML5 NOTE CLOSE-------------------------------------------------->
+
+<html lang="zh">
+
+    <head>
+	
+		<!--meta是用来在HTML文档中，生成部分服务器发送给浏览器的mime文档头部-->
+		<!--每一网页都应有title和meta（description比keywords重要），以便在搜索引擎中排名靠前-->
+
+		<!--<meta http-equiv="content-Type"; content="text/html; charset=utf-8">此为冗余写法-->
+		<meta charset="utf-8">			
+		
+	<!--以下http-equiv，主要用于服务器发送网页的设置，供浏览器使用。
+		<meta http-equiv="X-UA-Compatible" content = "IE=edge,chrome=1"> 
+		<meta http-equiv="content-script-type"; content="text/javascript" >
+		<meta http-equiv="window-target"; content="_top">
+		<meta http-equiv="Page-Enter"; content="blendTrans(Duration=2.5)" >
+		<meta http-equiv="Page-Exit"; content="blendTrans(Duration=2.5)" >
+		<meta http-equiv="Site-Enter"; content="blendTrans(Duration=0.5)" >
+		<meta http-equiv="Site-Exit"; content="blendTrans(Duration=0.5)" >
+		<meta http-equiv="Expires" content="0" >
+		<meta http-equiv="Set-Cookie" content="cookievalue=xxx; expires=Wednesday,21-Oct-98 16:14:21 GMT; path=/" >
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="-1" />
+		<meta http-equiv="refresh"; content="30"; url="index.html">当网址变更时，可以将用户重新定向之新的网址
+	-->
+		<title> 知微时代 </title>
+		<!--以下name，主要用于服务器发送网页的内容描述至浏览器，便于搜索引擎机器人查找和分类，keywords和description最重要-->
+
+		<meta name="revised" content="白焕新, 2017/3/1">
+		<meta name="robots" content="archive, index, follow">
+		<meta name="generator" content="Notepad++v7.7.1, phpstorm">
+		<meta name="author" content="知微时代 白焕新">
+	    <meta name="keywords" content="私有平台,智慧融合,隐私保护,数据掌控,企业服务">
+		<meta name="description" content="机构私有专属的网站，私有的分享、交流、协作的网络平台，帮助机构快速融合团队智慧；
+										并以个体和机构的展示、营销、变现为激励；达成个体和机构数据的承载、集散、整合。">
+
+		<!--<base href="http://localhost/jz3/"/>-该语句多余，有相对路径后，没必要写->
+		<!--<base target="_blank"/>-->
+		<!--<link rel="icon" type="image/png" href="" >此为冗余写法-->
+		<link rel="icon" href="./img/Logosmall.png"/>
+		<!--<link rel="stylesheet" type="text/css" href="./css/style.css">此为冗余写法-->
+		<link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="./css/style.css"/>		
+		<link rel="stylesheet" href="./css/tooltip.css"/>
+		<link rel="stylesheet" href="./css/titleclickmenu.css" media="screen"/>
+		<!--增加版本号?v=20171120143909纠正了Chrome不响应css文件改变的问题，但依然太麻烦，已改用phpstorm-->
+		<link rel="stylesheet" href="./css/search.css"/>	
+        <link rel="stylesheet" href="./css/sortswitch.css"/>
+
+
+		<link rel="stylesheet" href="./css/popup.css">
+
+		<!--<script type="text/javascript" charset="utf-8" src=""></script>此为冗余写法-->
+		<!--jquery库必须放在<head>部分里-->
+		<script src="./js/jquery-3.1.1.min.js"></script>
+		<script> var j$311 = $.noConflict(true); </script>
+		<script src="./js/tooltip.js"></script><!--使用j$311-->
+		<script src="./js/search.js"></script><!--使用j$311-->
+        <script src="./js/sortswitch.js"></script><!--使用j$311-->
+		
+		<!--daterangepicker-->
+		<script src="./js/jquery-1.3.1.min.js"></script>
+		<script src="./js/jquery-ui-1.7.1.custom.min.js"></script>
+		<script> var j$131 = $.noConflict(true); </script>
+		<script src="./js/daterangepickerbhx.jQuery.js"></script>
+		<link rel="stylesheet" href="./css/ui.daterangepicker.css" />
+		<link rel="stylesheet" href="./css/redmond/jquery-ui-1.7.1.custom.css" title="ui-theme" />
+
+		<script>
+				j$131(function(){
+					j$131('input#rangeA').daterangepickerbhx({arrows:true}); 
+				});			 
+		</script>
+				
+	</head>
+
+    <body>
+	<script src="./js/jquery-1.8.3.min.js"></script>
+	<!--<script> var j$180 = $.noConflict(true); </script>-->
+	<!--添加下面的脚本，在添加jquery后，在body结束前（ 依据http://docs.toddish.co.uk/popup），其实放在head中似乎没什么不同-->
+	<script src="./js/jquery.popup.min.js"></script>
+	<script>
+        $('.popup').popup();
+        $('.login_popup').popup({
+            types		: {
+                login			: function(content, callback){
+
+                    content = '<iframe  width="260" height="152" src="'+content+'" frameborder="0" scrolling="no" ></iframe>';
+
+                    // Don't forget to call the callback!
+                    callback.call(this, content);
+
+
+                }
+            },
+
+            width				: 260,
+            height			: 152
+
+        });
+	</script>
+	
+		<div id="header">
+		
+			<header>
+			
+				<ul id="titlenav">
+					<li>
+						<a class="fly" href="javascript:void(0);">
+							<div id="lgplace"><img src="./img/Logosmall.png" alt="公司Logo" title="点击看看"/></div>
+						</a>
+						<ul class="dd">
+							<li><a class="popup"
+								   href="img/Logo-title.png">查看Logo</a></li>
+							<!--popup插件不接受“.PNG文件”，可以接受“.png文件”.另外此处路径表述与别处不同,且必须去除"./"-->
+							<li><a href="#">修改Logo</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a class="fly" href="#">
+							<div id="company" title="点击看看">知微时代</div>
+						</a>
+						<ul class="dd">
+							<li><a href="#">机构切换</a></li>
+							<li><a href="#">机构简介</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a class="fly" href="#"><div id="dash" title="点击看看">- - -</div></a>
+						<ul class="dd">					
+								<li><a href="#">样式修改</a></li>	
+						</ul>
+					</li>
+					<!--这里原先都是假定使用页面链接和跳转实现的，现在需改用对话框实现-->
+					<!--<li><a class="fly" href="./test(debug)/login/login.php"><div id="username">白焕新</div></a> -->
+					<li>
+						<a href="javascript:void(0);">
+							<div id="username" title="点击看看">匿名访客</div>
+						</a>
+						<!--注意此处一定要写全http的绝对路径-->
+
+
+                        <ul class="dd">
+							<li><a class="login_popup" href="http://localhost:63342/phpstormproject/plugin/login/login.php?pt=login">用户切换</a></li>
+							<li><a href="#">用户注销</a></li>
+							<li><a href="#">我的简介</a></li>
+						</ul>
+					</li>
+
+				</ul>
+				
+				<a href="#"><div id="headernote" title="管理员点击编辑">知微时代（北京）私有专属分享交流协作平台</div></a>
+
+			</header>
+			
+			<div id="search">
+
+				<form class="period">
+					<input type="text" value="全部时间段" id="rangeA" title="点击选择时间段"/>
+				</form>
+				
+				<form class="sortswitch">
+					<input class="switch-checkbox" id="timehotswitch" type="checkbox"/>
+					<label class="switch-label" for="timehotswitch" title="点击切换热序时序">
+						<span class="switch-inner" data-on="时序" data-off="热序"></span>
+					</label>
+				</form>
+				
+				<form class="orderswitch">
+					<input class="switch-checkbox" id="updownswitch" type="checkbox"/>
+					<label class="switch-label" for="updownswitch" title="点击切换正序倒序">
+						<span class="switch-inner" data-on="正序" data-off="逆序"></span>
+					</label>
+				</form>
+
+				<form class="searchForm" method="get" action="" >
+
+					<input class="searchTerm"  placeholder="输入关键字查找…" title="点击输入关键字查找" autocomplete="off"/>
+					<input type="submit" class="searchBtn" value="找" title="点击查找"/>
+					<ul class="suggestionBox">
+						<li><b>白</b>焕新</li>
+						<li><b>产</b>品部</li>
+						<li><b>摄</b>影技巧</li>
+						<li><b>质</b>量控制</li>
+						<li><b>实</b>时监控</li>
+					</ul>
+
+					<div class="adding" title="点击添加"><div class="plus">+</div></div>
+
+				</form>
+				
+			</div>
+
+			<nav id="subnav">
+				<ul>
+					<li class="subnavli"><a href="#"><i class="fa fa-meetup" aria-hidden="true"></i>业务论坛</a></li>
+					<li class="subnavli"><a href="#"><i class="fa fa-comments" aria-hidden="true"></i>业务消息</a></li>
+					<li class="subnavli"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>我的笔记</a></li>
+					<li class="subnavli"><a href="#"><i class="fa fa-lock" aria-hidden="true"></i>我的日记</a></li>
+				</ul>
+			</nav>
+		
+		</div>
+
+		<div id="hiddenheader" style="width: 638px;height: 131px">此处是静态占有fixedheader空间</div>
+		
+		<div class="lsidebox">
+			<ul class="lbuttons">
+				<li class="lbutton">可见</li>
+				<li class="lbutton">署名</li>
+				<li class="lbutton">价格</li>
+				<li class="lbutton">悬赏</li>
+				<li class="lbutton">模式</li>
+			</ul>
+		</div>
+		
+		<div class="rsidebox">
+			<ul class="rbuttons">
+				<li class="rbutton">选择</li>
+				<li class="rbutton">删除</li>
+				<li class="rbutton">复制</li>
+				<li class="rbutton">粘贴</li>
+				<li class="rbutton">保存</li>
+			</ul>
+		</div>
+
+		<div id="content">
+		
+			<main>
+
+				<section class="datalist" id="p2017040111145614">
+
+					<div class="dataattr">
+
+						<ul class="dataattrul">
+							<li class="dataattrli visibility">公开</li>
+							<li class="dataattrli signature">白焕新</li>
+							<li class="dataattrli price" >价格:0</li>
+							<li class="dataattrli reward">悬赏:0</li>
+							<li class="dataattrli hotness">热度:88</li>
+							<li class="dataattrli update">2017-04-01-14:55</li>
+						</ul>
+					</div>
+					<div class="clearfloat"></div>
+					<div class="datatitle">
+					知微时代（北京）是一家DT时代专注于软资源开发，软实力构建，软实力营销的网络科技有限责任公司。
+					</div>
+					<div class="clearfloat"></div>
+	
+				</section>
+				<hr class="hrbottom"/>	
+
+				<section class="datalist" id="p2017040111145615">
+
+					<div class="dataattr">
+
+						<ul class="dataattrul">
+							<li class="dataattrli visibility">公开</li>
+							<li class="dataattrli signature">白焕新</li>
+							<li class="dataattrli price">价格:0</li>
+							<li class="dataattrli reward">悬赏:0</li>
+							<li class="dataattrli hotness">热度:88</li>
+							<li class="dataattrli update">2017-04-01-14:55</li>
+						</ul>
+					</div>
+					<div class="clearfloat"></div>
+					<div class="datatitle">
+					知微时代（北京）是一家DT时代专注于软资源开发，软实力构建，软实力营销的网络科技有限责任公司。
+					</div>
+					<div class="clearfloat"></div>	
+					
+				</section>
+				<hr class="hrbottom"/>	
+				
+				<section>
+				
+					<h1 lang="en" class="welcomeh1">
+						<b>H</b>i, welcome home！
+					</h1> 
+				
+						<p lang="en" class="welcomep">
+							<b>Y</b>our own website! <b>Y</b>our own network! <b>Y</b>our own cloud！
+						</p> 
+					
+						<div class="image">
+	
+							<a href="http://www.caidajuzi.com/">
+							
+								<img src="./img/公司Logo.gif" alt="公司Logo" width="110px" />
+							</a>
+	
+						</div>
+					
+					<h1 class="welcomeh1">亲，欢迎回家！</h1>
+						<p class="welcomep">您私有专属的网站，
+						<span class="tooltip" data-tip-type="text" data-tip-source="独享的平台控制权和数据所有权" >
+						私有专属的网络平台</span>，私有专属的云!</p>
+				
+					<div class="audio">
+					
+						<audio controls > <!--autoplay loop,但不能像video元素一样控制尺寸-->
+						
+							<!--<source src="./audio/Alarm01.wav" type="audio/mp3">此为冗余写法-->
+							<source src="./audio/Alarm01.wav" >
+							<source src="./audio/Alarm01.mp3" >
+							<!--Audio element not supported by your browser.-->
+							抱歉！您的浏览器不支持此音频格式。
+						
+						</audio>
+						
+					</div>
+					
+				</section>
+	
+				<section>
+
+					<h1>机智项目两分钟简介</h1>
+		
+						<div class="video">
+						
+							<!--<embed src="./video/机智项目白焕新（压缩）.swf" width="120" height="150">这是一种更通用的表达，有的格式可能需要flash等相关插件</embed>-->
+						
+							<video width="240px" controls >
+							
+								<!--<source src="./video/机智项目白焕新（压缩）.mp4" type="video/mp4">此为冗余写法-->
+								<source src="./video/机智项目白焕新（压缩）.mp4" >
+								<source src="./video/机智项目白焕新（压缩）_VP8.webm" >
+								<!--<object data="./video/机智项目白焕新（压缩）.mp4">
+									<a href="./video/机智项目白焕新（压缩）.mp4">下载</a>
+								</object>-->
+								
+								<!--Video element not supported by your browser.-->
+								抱歉啦！此浏览器不支持该视频格式！
+							</video>
+							
+						</div>
+					
+				</section>
+				
+				<section>
+				
+					<h1>机智产品简介</h1>
+					
+						<article>
+							<h2>简述</h2>
+								<p>
+									机智（机构智慧融合平台简称）是机构独自运营的、私有专属的网站或网络平台，
+									是机构相关人员实现分享、交流、协作的网络办公平台。
+								</p>
+								
+								<p>	
+								    机智的意义在于：帮助您快速融合团队智慧，也帮助您在分享中守住数据，
+									还帮助您在开放中保护隐私。
+								</p>
+				
+							<h2>功用</h2>
+								<p>
+									满足您的三大需求：<span class="emphasis">数据</span>承载、集散、整合；
+									<span class="emphasis">团队</span>分享、交流、协作；
+									<span class="emphasis">实力</span>展示、营销、变现。
+								</p>
+				
+							<h2>优势</h2>
+								<p>
+									机智是以供给问题解决方案为核心，以群组为根基，
+									以网站、网络应用和服务的本质特征抽象为基础的全景式的分享、交流、协作平台。
+								</p>
+		
+							<h2>亮点</h2>
+								<p>
+									All in one, all in record, feedback on all, reward for all. 一个账户应有尽有，按照使用收费。
+								</p>
+				
+							<h2>特色</h2>
+								<p>
+									功能全面、界面简洁、<span class="tooltip" data-tip-type="html" data-tip-source="tooltip-resume">简单易用</span>、免维护、高性价比。
+								</p>
+				
+							<h2>实现</h2>
+								<p>
+									中心式的服务端技术和服务下沉至机构和个体私有的服务端。
+								</p>
+						</article>
+					
+				</section>
+				
+				<section>
+				
+					<h1>机智产品愿景</h1>
+						<div class="article">	
+						
+							<h2>愿景</h2>
+								<p>
+									私有专属的功能全面的网站、
+									<span class="tooltip" data-tip-type="html" data-tip-source="tooltip-prospect">云服务平台</span>
+									、云办公平台、随时随地的整装配套的虚拟机。
+								</p>
+								
+							<h2>目标</h2>
+								<p>
+									成就以机构和个体为中心的开放的平台、配置按使用付费的应用商店和内容商店、开放与隐私兼顾。
+								</p>
+							<h2>表现</h2>
+								<p>
+									让网站、服务器、数据库、IP、域名、二维码、乃至云等为每一个机构和个体所有。
+								</p>				
+						</div>			
+									
+				</section>
+				
+			</main>
+		
+		</div>
+			
+		<div id="fixedfooter">
+		
+			<nav id="mainnav">
+				<ul>
+					<li class="mainnavli"><a href="#"><img src="./img/listsmall.jpg" title="信息列表"/></a></li>
+					<li class="mainnavli"><a href="#"><img src="./img/groupsmall.jpg" title="群组联系人" /></a></li>
+					<li class="mainnavli"><a href="#"><img src="./img/rankingsmall.jpg" title="统计排名"/></a></li>
+					<li class="mainnavli"><a href="#"><img src="./img/mesmall.jpg"  title="我的空间"/></a></li>
+				</ul>
+			</nav>
+			
+			<footer>				
+				<!--这里可以使用<a>创建发送邮件超级链接联系我们，具体参见w3cschool参考手册-->
+				<p id="footer">
+					联系我们：<a class="mainpage" href="./index.html"><i class="fa fa-home"><span id="hom" class="contac" title="www.zwsd.cn">www.zwsd.cn</span></i></a>
+					<i class="fa fa-mobile" aria-hidden="true"><span id="phon" class="contac" title="13930281539">13930281539</span></i>
+					<i class="fa fa-envelope" aria-hidden="true"><span id="emai" class="contac" title="bai-steven2011@hotmail.com">
+						<a class="email" href="mailto:bai-steven2011@hotmail.com?cc=baihuan_08221@sina.com&bcc=andbaihuan_08221@foxmail.com&subject=我%20需%20要%20帮%20助&body=你%20好%20，">bai-steven2011@hotmail.com</a></span></i>
+					<i class="fa fa-map-marker" aria-hidden="true"><span id="addre" class="contac" title="北京市海淀区中关村国际孵化器608">北京市海淀区中关村国际孵化器608</span></i><br />
+					法律保障：<span id="webid" class="contac" title="ICP备案号000000000">ICP备案号000000000</span>
+					<span id="secureid" class="contac" title="公网安备号11010802011314">公网安备号11010802011314</span>
+					违法举报<i class="fa fa-phone" aria-hidden="true"><span id="tele" class="contac" title="010-11110000">010-11110000</span></i><br />
+					版权申明：<i class="fa fa-copyright" aria-hidden="true"><span id="copyrigh" class="contac" title="知微时代(北京)版权所有">知微时代(北京)版权所有</span></i>
+					<span id="owner" class="contac" title="Powered by 机智网络平台">Powered by 机智网络平台</span>
+				</p>
+				
+			</footer>
+			
+		</div>
+
+		<div id="hiddenfooter" style="width: 638px;height: 122px">此处是静态占有fixedfooter空间</div>
+
+
+
+		<!--以下为页面的相关附件，如tooltip、二级页面的相关元素-->
+
+		<!--tooltip相关元素。文本提示可以就地解决，有图的html格式的tooltip在此列出,已将tooltip的<a>改为<span>,但是用
+		<a>可获得链接位置，也就是说，使用<a>可以设法将以下内容存在另外的文件中，这样便于管理和维护。-->
+		<div id="tooltip_container">Tooltip内容</div>
+			
+		<div class="tooltip-source-html">
+			<div id="tooltip-resume">
+				<img src="./img/公司Logo.gif" height="29px" width="33px" style="float:left;display:block;margin:5px;">
+				机智非常 <strong><em style="color:#ffe19a;">简单易用</em></strong> 上手即用.
+				<div class="clear-all"></div>
+			</div>
+
+			<div id="tooltip-prospect">
+				<img src="./img/公司Logo.gif" height="29px" width="33px" style="float:left;display:block;margin:5px;">
+				机智是私有的 <strong><em style="color:#ffe19a;">云服务平台</em></strong> :您的私有财产.
+				<div class="clear-all"></div>
+			</div>
+
+		</div>
+			
+	</body>
+
+</html>
